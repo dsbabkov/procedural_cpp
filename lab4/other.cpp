@@ -201,3 +201,16 @@ void VarArgsM(int val1, ...)
 
     std::cout << '\n';
 }
+
+int *MyMin(int *arr, int n)
+{
+    int *min = arr;
+
+    for (int i = 0; i < n; ++i){
+        if (*min > arr[i]){
+            std::swap(*min, arr[i]);
+        }
+    }
+
+    return min;
+}

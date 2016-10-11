@@ -28,3 +28,5 @@ int naturalSum (int n);
 
 void VarArgs(int val1, ...);
 void VarArgsM(int val1, ...);
+
+int *MyMin(int *arr, int n);
