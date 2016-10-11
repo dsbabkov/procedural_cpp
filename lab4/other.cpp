@@ -162,3 +162,10 @@ bool valueExists(const int *arr, int n, int value)
 
     return false;
 }
+
+int naturalSum(int n)
+{
+    return n == 1 ?
+                1 :
+                n + naturalSum(n - 1);
+}

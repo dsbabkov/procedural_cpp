@@ -23,3 +23,5 @@ int DayOfMonth(int day, int &month, const int (&dayTab)[12]);
 void printArray(const int *arr, int n);
 int *addUnique(int *arr, int& n, int value);
 bool valueExists(const int *arr, int n, int value);
+
+int naturalSum (int n);
