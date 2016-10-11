@@ -228,6 +228,10 @@ int main()
 
         //Задание 7б. Модифицируйте функцию 5а с помощью макросов
         // va_start, va_arg, va_end
+        VarArgsM(nN1,0);
+        VarArgsM(nN1,nN2,0);
+        VarArgsM(nN1,nN2,nN3,nN4,nN5,0);
+        stop
 
     }
 

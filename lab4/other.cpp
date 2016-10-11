@@ -173,17 +173,31 @@ int naturalSum(int n)
 
 void VarArgs(int val1, ...)
 {
-    char *p = reinterpret_cast<char *>(&val1);
-    do {
-        std::cout << *reinterpret_cast<int *>(p) << ' ';
-        p += sizeof(p);
-    }while(*reinterpret_cast<int *>(p));
+    std::cout << val1;
 
-    std::cout << '\n';
+    if (val1){
+        char *p = reinterpret_cast<char *>(&val1 + 1);
+        while( (val1 = *reinterpret_cast<int *>(p)) ){
+            std::cout << ' ' << val1;
+            p += sizeof(p);
+        };
 
+        std::cout << '\n';
+    }
 }
 
 void VarArgsM(int val1, ...)
 {
-    va_list vl;
+    std::cout << val1;
+
+    if (val1){
+        va_list p;
+        va_start(p, val1);
+
+        while (val1 = va_arg(p, int)){
+            std::cout << ' ' << val1;
+        }
+    }
+
+    std::cout << '\n';
 }
