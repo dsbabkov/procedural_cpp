@@ -1,6 +1,7 @@
 #include "other.h"
 #include <cstring>
 #include <iostream>
+#include <cstdarg>
 
 double globalValue = 3;
 double &ref = globalValue;
@@ -168,4 +169,21 @@ int naturalSum(int n)
     return n == 1 ?
                 1 :
                 n + naturalSum(n - 1);
+}
+
+void VarArgs(int val1, ...)
+{
+    char *p = reinterpret_cast<char *>(&val1);
+    do {
+        std::cout << *reinterpret_cast<int *>(p) << ' ';
+        p += sizeof(p);
+    }while(*reinterpret_cast<int *>(p));
+
+    std::cout << '\n';
+
+}
+
+void VarArgsM(int val1, ...)
+{
+    va_list vl;
 }

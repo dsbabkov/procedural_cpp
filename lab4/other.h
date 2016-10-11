@@ -25,3 +25,6 @@ int *addUnique(int *arr, int& n, int value);
 bool valueExists(const int *arr, int n, int value);
 
 int naturalSum (int n);
+
+void VarArgs(int val1, ...);
+void VarArgsM(int val1, ...);
