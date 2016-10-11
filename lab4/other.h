@@ -19,3 +19,7 @@ int MyStrCmp(const char *left, const char *right);
 
 int DayOfYear(int day, int month, const int (&dayTab)[12]);
 int DayOfMonth(int day, int &month, const int (&dayTab)[12]);
+
+void printArray(const int *arr, int n);
+int *addUnique(int *arr, int& n, int value);
+bool valueExists(const int *arr, int n, int value);

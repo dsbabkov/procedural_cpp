@@ -1,4 +1,6 @@
 #include "other.h"
+#include <cstring>
+#include <iostream>
 
 double globalValue = 3;
 double &ref = globalValue;
@@ -123,4 +125,40 @@ int DayOfMonth(int day, int &month, const int (&dayTab)[12])
     ++month;
 
     return day;
+}
+
+void printArray(const int *arr, int n)
+{
+    for (int i = 0; i < n; ++i){
+        std::cout << arr[i] << '\t';
+    }
+    std::cout << '\n';
+}
+
+int *addUnique(int *arr, int &n, int value)
+{
+    if (valueExists(arr, n, value)){
+        std::cerr << "Value allready exists\n";
+        return arr;
+    }
+
+    int *result = new int[n + 1];
+
+    memcpy(result, arr, sizeof(*arr) * n);
+
+    result[n++] = value;
+    delete[] arr;
+
+    return result;
+}
+
+bool valueExists(const int *arr, int n, int value)
+{
+    for (int i = 0; i < n; ++i){
+        if (arr[i] == value){
+            return true;
+        }
+    }
+
+    return false;
 }
