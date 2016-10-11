@@ -105,3 +105,22 @@ int MyStrCmp(const char *left, const char *right)
     }
     return *left - *right;
 }
+
+int DayOfYear(int day, int month, const int (&dayTab)[12])
+{
+    for (int i = 0; i < month - 1; ++i){
+        day += dayTab[i];
+    }
+    return day;
+}
+
+int DayOfMonth(int day, int &month, const int (&dayTab)[12])
+{
+    month = 0;
+    while (day > dayTab[month] && month < 12){
+        day -= dayTab[month++];
+    }
+    ++month;
+
+    return day;
+}

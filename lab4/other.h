@@ -16,3 +16,6 @@ int Min (int array[][M], int rows);
 int Min (int *array, int elementCount);
 
 int MyStrCmp(const char *left, const char *right);
+
+int DayOfYear(int day, int month, const int (&dayTab)[12]);
+int DayOfMonth(int day, int &month, const int (&dayTab)[12]);
