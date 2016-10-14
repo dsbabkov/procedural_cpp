@@ -11,8 +11,8 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     book.cpp \
-    libraryFunctions.cpp
+    library.cpp
 
 HEADERS += \
     book.h \
-    libraryFunctions.h
+    library.h

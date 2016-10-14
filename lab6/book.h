@@ -1,6 +1,18 @@
 #pragma once
+#include <cstdio>
 
 extern const char *knownCategories[];
+
+const char bookFileFormat[] = /*Author*/ "%s"
+							/*Title*/ " %s"
+							/*Year*/ " %d"
+							/*Price*/ " %lf"
+							/*Category*/ " %s";
+const char bookStdoutFormat[] = "Author: %s\n"
+								"Title: %s\n"
+								"Year: %d\n"
+								"Price: %g\n"
+								"Category: %s\n";
 
 struct Book
 {
@@ -14,5 +26,5 @@ struct Book
 void inputBook(Book &book);
 bool isKnownCategory(char category[]);
 
-void printBook(const Book &book);
+void printBook(const Book &book, const char *format = bookStdoutFormat, FILE *stream = stdout);
 void copyBook(Book &dest, const Book &source);

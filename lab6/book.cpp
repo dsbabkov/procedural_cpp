@@ -25,7 +25,7 @@ void inputBook(Book &book)
     };
 
     while(true) {
-        printf("Input price\n");
+        printf("Input price: ");
         scanf("%lf", &book.price);
         if (book.price >= 0){
             break;
@@ -53,13 +53,9 @@ bool isKnownCategory(char category[])
     return false;
 }
 
-void printBook(const Book &book)
+void printBook(const Book &book, const char *format, FILE *stream)
 {
-    printf("Author: %s\n"
-           "Title: %s\n"
-           "Year: %d\n"
-           "Price: %g\n"
-           "Category: %s\n", book.author, book.title, book.year, book.price, book.category);
+    fprintf(stream, format, book.author, book.title, book.year, book.price, book.category);
 }
 
 void copyBook(Book &dest, const Book &source)
