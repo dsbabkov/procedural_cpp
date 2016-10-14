@@ -26,7 +26,7 @@ void printArray(const T arr, size_t N, size_t M = 1) {
 int main()
 {
     srand(time(0));
-    goto task7;
+    goto task6;
 ///////////////////////////////////////////////////////////////
 //			Встроенные массивы                               //
 ///////////////////////////////////////////////////////////////
@@ -408,6 +408,7 @@ int main()
         delete[] strings;
     }
 
+    task6:
     {
         //Задание 6*. Объявление и использование указателей на многомерные
         // массивы. Проинициализируйте трехмерный массив
@@ -467,15 +468,18 @@ int main()
         //			  | 2  2  2 | /
         //			  |_________|
 
-        for(int i = 0; i < M * K; ++i)
+        for(int i = 0; i < N; i += 2)
         {
         //Замечание: НЕ НУЖНО МОДИФИЦИРОВАТЬ ВЫРАЖЕНИЯ СПРАВА ОТ ЗНАКА РАВЕНСТВА!!!
-//            ... =  dArray[i];
-//            ... =  dArray[i+1];
+            double (*layer1)[K] = dArray[i];
+            double (*layer2)[K] =  dArray[i+1];
             //переставляем местами элементы i-того и i+1-ого слоев
-
-
+            double tmp[M][K];
+            memcpy(tmp, layer1, sizeof(tmp));
+            memcpy(layer1, layer2, sizeof(tmp));
+            memcpy(layer2, tmp, sizeof(tmp));
         }
+        stop
     }
 
     task7:
