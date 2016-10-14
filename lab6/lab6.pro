@@ -10,7 +10,9 @@ CONFIG -= app_bundle
 TEMPLATE = app
 
 SOURCES += main.cpp \
-    book.cpp
+    book.cpp \
+    libraryFunctions.cpp
 
 HEADERS += \
-    book.h
+    book.h \
+    libraryFunctions.h

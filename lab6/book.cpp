@@ -61,3 +61,13 @@ void printBook(const Book &book)
            "Price: %g\n"
            "Category: %s\n", book.author, book.title, book.year, book.price, book.category);
 }
+
+void copyBook(Book &dest, const Book &source)
+{
+    dest.price = source.price;
+    dest.year = source.year;
+
+    strcpy(dest.author, source.author);
+    strcpy(dest.title, source.author);
+    strcpy(dest.category, source.category);
+}

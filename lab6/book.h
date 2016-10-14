@@ -15,3 +15,4 @@ void inputBook(Book &book);
 bool isKnownCategory(char category[]);
 
 void printBook(const Book &book);
+void copyBook(Book &dest, const Book &source);
