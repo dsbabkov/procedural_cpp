@@ -60,6 +60,8 @@ void writeToFile(Library &lib) {
 		printBook(lib.books[i], bookFileFormat, file);
 		fprintf(file, "\n");
 	}
+
+    fclose(file);
 }
 
 void readFromFile(Library &lib) {
@@ -83,6 +85,8 @@ void readFromFile(Library &lib) {
 		Book &book = lib.books[i];
 		fscanf(file, bookFileFormat, &book.author, &book.title, &book.year, &book.price, &book.category);
 	}
+
+    fclose(file);
 }
 
 void help(Library &) {
