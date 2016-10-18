@@ -67,3 +67,11 @@ void copyBook(Book &dest, const Book &source)
     strcpy(dest.title, source.author);
     strcpy(dest.category, source.category);
 }
+
+void swap(Book &left, Book &right)
+{
+    Book tmp;
+    copyBook(tmp, left);
+    copyBook(left, right);
+    copyBook(right, tmp);
+}

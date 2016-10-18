@@ -1,10 +1,12 @@
 #include "library.h"
 #include <cstdio>
 #include <cstdlib>
+#include "Sorter.h"
 
 static const LibraryFunctionCommand commandMap[] = {
 	{ 'p', printLibrary, "Print all books" },
-	{ 'a', addBook, "Add new book" },
+    { 'S', sort, "Sort books" },
+    { 'a', addBook, "Add new book" },
 	{ 'r', removeBook, "Remove book by id" },
 	{ 's', writeToFile, "Save library to file" },
 	{ 'o', readFromFile, "Open library file" },
@@ -135,4 +137,19 @@ void reserve(Library &lib, int capacity) {
 	delete[] lib.books;
 	lib.books = tempBooks;
 	lib.capacity = capacity;
+}
+
+void printSortedLibrary(Library &lib)
+{
+    printLibrary(lib);
+}
+
+void sort(Library &lib)
+{
+    printf("Input sort field number: ");
+    int sortType;
+    scanf("%d", &sortType);
+
+    sort(lib, static_cast<SortField>(sortType));
+    printLibrary(lib);
 }

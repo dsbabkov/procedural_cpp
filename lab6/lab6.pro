@@ -11,8 +11,10 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     book.cpp \
-    library.cpp
+    library.cpp \
+    Sorter.cpp
 
 HEADERS += \
     book.h \
-    library.h
+    library.h \
+    Sorter.h

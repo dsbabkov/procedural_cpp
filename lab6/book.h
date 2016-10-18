@@ -28,3 +28,6 @@ bool isKnownCategory(char category[]);
 
 void printBook(const Book &book, const char *format = bookStdoutFormat, FILE *stream = stdout);
 void copyBook(Book &dest, const Book &source);
+
+void swap(Book &left, Book &right);
+

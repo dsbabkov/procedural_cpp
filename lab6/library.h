@@ -17,10 +17,12 @@ struct LibraryFunctionCommand {
 };
 
 void printLibrary(Library &lib);
+void printSortedLibrary(Library &lib);
 void addBook(Library &lib);
 void removeBook(Library &lib);
 void writeToFile(Library &lib);
 void readFromFile(Library &lib);
+void sort(Library &);
 void help(Library &);
 void quit(Library &);
 
