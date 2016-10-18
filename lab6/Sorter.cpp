@@ -1,6 +1,7 @@
 #include "Sorter.h"
 #include "library.h"
 #include <cstring>
+#include <utility>
 
 namespace {
     int compareBooksByAuthor(const Book &left, const Book &right){
@@ -21,7 +22,7 @@ namespace {
     }
 
     int compareBooksByCategory(const Book &left, const Book &right){
-        return left.category - right.category;
+        return strcmp(left.category, right.category);
     }
 
     typedef int (*CompareFun)(const Book &left, const Book &right);
@@ -34,6 +35,24 @@ namespace {
     };
     static_assert(sizeof(compareFuns) / sizeof(*compareFuns) == SortFieldCount,
                   "Bad compare function count.");
+
+    void sort(const Book **books, int size, CompareFun compare){
+        for (int i = 0; i < size - 1; ++i){
+            for (int j = i + 1; j < size; ++j){
+                if (compare(*books[i], *books[j]) > 0){
+                    std::swap(books[i], books[j]);
+                }
+            }
+        }
+    }
+
+    const Book **extractBookPointers(const Library &lib){
+        const Book **result = new const Book *[lib.size];
+        for (int i = 0; i < lib.size; ++i){
+            result[i] = &lib.books[i];
+        }
+        return result;
+    }
 }
 
 void sort(Library &lib, SortField field)
@@ -51,4 +70,17 @@ void sort(Library &lib, SortField field)
             }
         }
     }
+}
+
+const Book **sorted(const Library &lib, SortField field)
+{
+    if (field >= SortFieldCount){
+        fprintf(stderr, "Bad sort field got.\n");
+        return nullptr;
+    }
+
+    CompareFun compare = compareFuns[field];
+    const Book **result = extractBookPointers(lib);
+    sort(result, lib.size, compare);
+    return result;
 }

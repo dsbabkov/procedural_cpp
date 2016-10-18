@@ -5,7 +5,7 @@
 
 static const LibraryFunctionCommand commandMap[] = {
 	{ 'p', printLibrary, "Print all books" },
-    { 'S', sort, "Sort books" },
+    { 'P', printSortedLibrary, "Print sorted books" },
     { 'a', addBook, "Add new book" },
 	{ 'r', removeBook, "Remove book by id" },
 	{ 's', writeToFile, "Save library to file" },
@@ -141,7 +141,15 @@ void reserve(Library &lib, int capacity) {
 
 void printSortedLibrary(Library &lib)
 {
-    printLibrary(lib);
+    printf("Input sort field number: ");
+    int sortType;
+    scanf("%d", &sortType);
+
+    const Book **sortedLib = sorted(lib, static_cast<SortField>(sortType));
+    if (sortedLib){
+        printLibrary(sortedLib, lib.size);
+        delete[] sortedLib;
+    }
 }
 
 void sort(Library &lib)
@@ -152,4 +160,12 @@ void sort(Library &lib)
 
     sort(lib, static_cast<SortField>(sortType));
     printLibrary(lib);
+}
+
+void printLibrary(const Book **books, int size)
+{
+    for (int i = 0; i < size; ++i){
+        printf("%d\n", i);
+        printBook(*books[i]);
+    }
 }

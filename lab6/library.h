@@ -30,3 +30,4 @@ void copyBooks(Book *dest, const Book *source, int size);
 void deleteLibrary(Library &lib);
 LibraryFunction functionForCommand(char letter);
 void reserve(Library &lib, int capacity);
+void printLibrary(const Book **books, int size);
